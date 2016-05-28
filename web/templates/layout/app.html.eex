@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="JT's Personal Website">
+    <meta name="author" content="JT Turner">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <title>JTWebMan.com</title>
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+  </head>
+
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/"><img src="/images/logo.png" class="nav-logo" alt="JTWebMan" /></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="http://facebook.com/jtwebman"><i class="fa fa-facebook-square"></i></a></li>
+            <li><a href="http://twitter.com/jtwebman"><i class="fa fa-twitter-square"></i></a></li>
+            <li><a href="http://github.com/jtwebman"><i class="fa fa-github-square"></i></a></li>
+            <li><a href="http://instagram.com/jtwebman"><i class="fa fa-instagram"></i></a></li>
+            <li><a href="http://youtube.com/jtwebman"><i class="fa fa-youtube-square"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div id="wrap">
+      <%= render @view_module, @view_template, assigns %>
+    </div>
+    <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+    <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+    <footer class="footer navbar-inverse navbar-fixed-bottom">
+      <div class="container">
+        <div class="muted credit">
+          <p>Built using <a href="http://www.phoenixframework.org/">Phoenix</a> on Elixir and you can find the source code on my <a href="https://github.com/jtwebman/jtwebman.com">GitHub</a>.</p>
+          <p>Copyright &copy; 2016 JTWebMan, Inc., The MIT License (<a href="https://github.com/jtwebman/jtwebman.com/blob/master/LICENSE.md">MIT</a>)</p>
+        </div>
+      </div>
+    </footer>s
+    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+  </body>
+</html>
