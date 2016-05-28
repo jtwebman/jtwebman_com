@@ -1,15 +1,6 @@
-# JTWebMan.com site
-
-This is my personal blog website built with [Phoenix](http://www.phoenixframework.org/)
-on top of [Elixir](http://elixir-lang.org/) and the backend admin is in [Elm](http://elm-lang.org/).
-
-I just started this as a new blog series actually building a blog in Elixir and Elm.
-
-## License
-
 The MIT License (MIT)
 
-Copyright &copy; 2016 Jeff Turner
+Copyright © 2016 Jeff Turner
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
