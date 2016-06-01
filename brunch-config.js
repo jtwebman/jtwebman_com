@@ -32,7 +32,10 @@ exports.config = {
     // This option sets where we should place non-css and non-js assets in.
     // By default, we set this to "/web/static/assets". Files in this directory
     // will be copied to `paths.public`, which is "priv/static" by default.
-    assets: /^(web\/static\/assets)/
+    assets: [
+      /^(web\/static\/assets)/,
+      /^(node_modules\/font-awesome)/
+    ]
   },
 
   // Phoenix paths configuration
@@ -40,7 +43,12 @@ exports.config = {
     // Dependencies and current project directories to watch
     watched: [
       "web/static",
-      "test/static"
+      "test/static",
+      "node_modules/font-awesome/fonts/fontawesome-webfont.eot",
+      "node_modules/font-awesome/fonts/fontawesome-webfont.svg",
+      "node_modules/font-awesome/fonts/fontawesome-webfont.ttf",
+      "node_modules/font-awesome/fonts/fontawesome-webfont.woff",
+      "node_modules/font-awesome/fonts/fontawesome-webfont.woff2"
     ],
 
     // Where to compile files to
@@ -52,12 +60,22 @@ exports.config = {
     babel: {
       // Do not use ES6 compiler in vendor code
       ignore: [/web\/static\/vendor/]
+    },
+    sass: {
+      includePaths: ["node_modules/bootstrap-sass/assets/stylesheets"],
+      precision: 8 // minimum precision required by bootstrap-sass
+    },
+    copycat: {
+      "fonts": ["node_modules/bootstrap-sass/assets/fonts/bootstrap"] // copy node_modules/bootstrap-sass/assets/fonts/bootstrap/* to priv/static/fonts/
     }
   },
 
   modules: {
     autoRequire: {
-      "js/app.js": ["web/static/js/app"]
+      "js/app.js": [
+        "bootstrap-sass", // require bootstrap-sass' JavaScript globally
+        "web/static/js/app"
+      ]
     }
   },
 
@@ -65,6 +83,10 @@ exports.config = {
     enabled: true,
     // Whitelist the npm deps to be pulled in as front-end assets.
     // All other deps in package.json will be excluded from the bundle.
-    whitelist: ["phoenix", "phoenix_html"]
+    whitelist: ["phoenix", "phoenix_html", "jquery", "bootstrap-sass"],
+    globals: { // bootstrap-sass' JavaScript requires both '$' and 'jQuery' in global scope
+      $: "jquery",
+      jQuery: "jquery"
+    }
   }
 };
